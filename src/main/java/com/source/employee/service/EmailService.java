@@ -20,7 +20,7 @@ JavaMailSender javaMailSender;
 
 public String sendEmail() {
 SimpleMailMessage message = new SimpleMailMessage();
-
+     
 	message.setFrom("cdineshchauhan636896@gmail.com");
     message.setTo("cdineshchauhan636896@gmail.com");
     message.setSubject("For Testing purpose");

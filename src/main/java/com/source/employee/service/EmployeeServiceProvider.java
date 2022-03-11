@@ -1,11 +1,13 @@
 package com.source.employee.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.source.employee.dao.RepositoryDao;
+import com.source.employee.dto.EmployeeLocationDto;
 import com.source.employee.entity.Employee;
 
 @Service
@@ -20,8 +22,6 @@ import com.source.employee.entity.Employee;
 		}
 
 	
-		
-		
 
 		public Employee addEmployee(Employee employee) {
 			// TODO Auto-generated method stub
@@ -35,8 +35,8 @@ import com.source.employee.entity.Employee;
 		}
 
 		
-		public void deleteEmployee(long studentid) {
-			repositorydao.deleteById(studentid);
+		public void deleteEmployee(long id) {
+			repositorydao.deleteById(id);
 			
 		}
 
@@ -53,7 +53,33 @@ import com.source.employee.entity.Employee;
 			
 		}
 		
-
+	public List<EmployeeLocationDto> getallEmployees(){
+		return repositorydao.findAll()
+				.stream()
+				.map(this::convertEntityToDto)
+				.collect(Collectors.toList());
+	}
 		
+	
+	
+		private EmployeeLocationDto  convertEntityToDto(Employee employee) 
+		{
+			EmployeeLocationDto employeeLocationDto=new EmployeeLocationDto();
+			employeeLocationDto.setId(employee.getId());
+			employeeLocationDto.setEmployee_Name(employee.getEmp_Name());
+			employeeLocationDto.setPlace(employee.getLocation().getPlace());
+			employeeLocationDto.setLatitude(employee.getLocation().getLatitude());
+			employeeLocationDto.setLongitude(employee.getLocation().getLongitude());
+			employeeLocationDto.setDescription(employee.getLocation().getDescription());
+		 return employeeLocationDto;
+		}
+
 
 }
+
+
+		
+					
+			
+		
+

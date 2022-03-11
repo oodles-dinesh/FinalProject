@@ -14,6 +14,7 @@ public class EmployeeValidation {
 	private long id;
 	@NotEmpty
 	@Email
+	
 	private  String email;
 	@NotEmpty
 	@Size(min = 8,message = "the password should atleast 8 character")

@@ -22,8 +22,8 @@ public class Department {
 	public long getOffice_id() {
 		return office_id;
 	}
-	public void setOffice_id(long  office_id) {
-		this.office_id = office_id;
+	public void setOffice_id(String office_name) {
+		this.office_name = office_name;
 	}
 	public String getOffice_name() {
 		return office_name;
@@ -51,9 +51,9 @@ public class Department {
 		// TODO Auto-generated constructor stub
 	}
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="off_id",
-	referencedColumnName = "id"
-			)
+	@JoinColumn(name="Employee_id",
+	referencedColumnName = "id")
+			
  private Employee employee;
 	public Employee getEmployee() {
 		return employee;

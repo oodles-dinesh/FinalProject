@@ -17,12 +17,17 @@ public class DepartmentServiceProvider {
 		return departmentdao.findAll();
 	}
 
-	public Department putDepartment(Department department) {
+	public Department saveDepartment(Department department) {
 		return departmentdao.save(department);
 	}
 	
-	
+
+		
+		
+		}
+		
+
 	
 	
 
-}
+
