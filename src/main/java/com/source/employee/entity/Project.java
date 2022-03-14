@@ -2,7 +2,6 @@ package com.source.employee.entity;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,7 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 
 @Entity
 public class Project {
@@ -31,19 +29,14 @@ public class Project {
 		this.projectName = projectName;
 	}
 	
-	public Project(long project_id, String projectName, Department department) {
+	public Project(long project_id, String projectName) {
 		super();
 		this.project_id = project_id;
 		this.projectName = projectName;
-		this.department = department;
+	
 	
 	}
-	public Department getDepartment() {
-		return department;
-	}
-	public void setDepartment(Department department) {
-		this.department = department;
-	}
+	
 	public List<Employee> getEmployees() {
 		return employees;
 	}
@@ -53,10 +46,7 @@ public class Project {
 	public Project() {
 		super();
 	}
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="workspace_id",
-	referencedColumnName = "office_id")
-	private Department department;
+	
 	@ManyToMany
 	@JoinTable(name="employee_project",
 	 joinColumns = @JoinColumn(name="projectid",referencedColumnName = "project_id"),

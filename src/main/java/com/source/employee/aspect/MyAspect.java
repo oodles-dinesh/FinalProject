@@ -1,6 +1,7 @@
 package com.source.employee.aspect;
 
 import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -23,4 +24,16 @@ public class MyAspect {
 	 {
 		 System.out.println("sucessfully done");
 	 }
+	 @AfterReturning("execution( * com.source.employee.aop.EmployeeSalaryAccountImpl.doOperation())")
+	 public void usingAfterReturning() {
+		 System.out.println("Do this before Money is Credited");
+	 }
+/*	 @AfterThrowing("execution( * com.source.employee.aop.EmployeeSalaryAccountImpl.doTask())")
+	 
+		 public void usingAfterThrowing(MyException ex)
+		 {
+			 System.out.println("this is my exception " +ex);
+		 }
+		 */
+	 
 }

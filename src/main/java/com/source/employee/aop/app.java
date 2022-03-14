@@ -10,6 +10,9 @@ public class app {
          EmployeeSalaryAccount account =context.getBean("payement",EmployeeSalaryAccount.class);
          //joint point
          account.makePayment();
+         int val =account.doOperation();
+         System.out.println("value"+val);
+         account.doTask();
 	}
 
 }

@@ -14,4 +14,17 @@ public class EmployeeSalaryAccountImpl implements EmployeeSalaryAccount {
 		
 	}
 
+	@Override
+	public int doOperation() {
+		 return 500;
+		
+	}
+
+	@Override
+	public String doTask() {
+		
+		throw new MyException("this is my exception");
+	
+	}
+
 }

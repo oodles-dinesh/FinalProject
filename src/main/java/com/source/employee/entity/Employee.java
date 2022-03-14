@@ -2,6 +2,7 @@ package com.source.employee.entity;
 
 import java.math.BigDecimal;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,15 +11,20 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
-
+@Table(name = "employee",uniqueConstraints = @UniqueConstraint(name="unique_email",
+columnNames = {"email"}))
+		  
 public class Employee {
           @Id
           @GeneratedValue(strategy = GenerationType.AUTO)
 			private long id;
 			private String Employee_Name;
-			@Column(unique=true)
+		
+			@Column(name = "email")
              private String Email;
 			private BigDecimal salary;
 		public Employee(long id, String employee_Name, String email, BigDecimal d) {
@@ -65,7 +71,8 @@ public class Employee {
 		@OneToOne(mappedBy = "employee")
 		private Department department;
 		
-           @ManyToOne
+           @ManyToOne(targetEntity = Location.class,
+        		   cascade =CascadeType.ALL )
            @JoinColumn(name="location_id",referencedColumnName = "id"
            )
            

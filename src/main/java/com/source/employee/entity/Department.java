@@ -61,7 +61,7 @@ public class Department {
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
 	}
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany( targetEntity = Project.class,cascade = CascadeType.ALL)
 	@JoinColumn(name="workspace_id",
 	referencedColumnName = "office_id")
 	
