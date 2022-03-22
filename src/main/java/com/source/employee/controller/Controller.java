@@ -6,7 +6,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.source.employee.entity.Employee;
-import com.source.employee.exception.BuisnessException;
-import com.source.employee.exception.ControllerException;
 import com.source.employee.service.EmployeeServiceProvider;
 
 @RestController
@@ -30,41 +27,24 @@ public class Controller {
 		List<Employee> getAllEmployee=employeeservice.getEmployee();
 		return new ResponseEntity<List<Employee>>(getAllEmployee,HttpStatus.OK);
 	}
-
+    
+	
 	@GetMapping("/employee/{id}")
-	public ResponseEntity<?> getEmployeedId(@PathVariable("id") @Validated long id) {
-		try {
-		Employee empRetirved= employeeservice.getEmployeeId(id);
-		return new ResponseEntity<Employee>(empRetirved,HttpStatus.OK);
-		}
-		catch(BuisnessException e)
-		{
-			ControllerException ce=new ControllerException(e.getErrorCode(),e.getErrorMessage());
-			return new ResponseEntity<ControllerException>(ce,HttpStatus.BAD_REQUEST);
-		}
-		catch(Exception e)
-		{
-			ControllerException ce=new ControllerException("611","Something went wrong in controller layer");
-			return new ResponseEntity<ControllerException>(ce,HttpStatus.BAD_REQUEST);
-		}
-	}
+	public ResponseEntity<Employee> getEmployeedId(@PathVariable("id") long id) throws Exception {
+	  
+	  Employee empRetirved= employeeservice.getEmployeeId(id);
+	 
+	  return new ResponseEntity<Employee>(empRetirved,HttpStatus.ACCEPTED);
+		
+				
+        	}
 
 	@PostMapping("/employee")
 	public ResponseEntity<?> addEmployee(@RequestBody Employee employee) {
-		try {
+		
 		Employee employeeSaved =employeeservice.addEmployee(employee);
 		return  new ResponseEntity<Employee>(employeeSaved,HttpStatus.CREATED);
-		}
-		catch(BuisnessException e)
-		{
-			ControllerException ce=new ControllerException(e.getErrorCode(),e.getErrorMessage());
-			return new ResponseEntity<ControllerException>(ce,HttpStatus.BAD_REQUEST);
-		}
-		catch(Exception e)
-		{
-			ControllerException ce=new ControllerException("610","Something went wrong in controller layer");
-			return new ResponseEntity<ControllerException>(ce,HttpStatus.BAD_REQUEST);
-		}
+		
 	}
 
 	@PutMapping("/employee/{id}")
@@ -75,28 +55,33 @@ public class Controller {
 	}
 
 	@DeleteMapping("/employee/{id}")
-	public void deleteEmployee(@PathVariable("id") long studentid) {
+	public ResponseEntity<Void> deleteEmployee(@PathVariable("id") long empId) {
+	
+		employeeservice.deleteEmployee(empId);
 		
-		
-	         employeeservice.deleteEmployee(studentid);
+	       return new ResponseEntity<Void>(HttpStatus.ACCEPTED);
+	      
+	    	  
+	      
 	
 
 	}
-
+   
 	@DeleteMapping("/employee")
-	public void deleteAllEmployee() {
+	public ResponseEntity<Void>  deleteAllEmployee() {
 		employeeservice.deleteAllEmployee();
+		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 	
 	
-	 
+	
 	
      org.slf4j.Logger logger =LoggerFactory.getLogger(Controller.class);
 
 	@GetMapping("/project")
 	public String homepage()
 	{
-	  logger.trace("fatal error");
+	  logger.debug("fatal error");
 	  return "Project Of Employee_Trainee";
 	}
 }

@@ -28,12 +28,12 @@ public class MyAspect {
 	 public void usingAfterReturning() {
 		 System.out.println("Do this before Money is Credited");
 	 }
-/*	 @AfterThrowing("execution( * com.source.employee.aop.EmployeeSalaryAccountImpl.doTask())")
+	/* @AfterThrowing("execution( * com.source.employee.aop.EmployeeSalaryAccountImpl.doTask())")
 	 
 		 public void usingAfterThrowing(MyException ex)
 		 {
 			 System.out.println("this is my exception " +ex);
 		 }
-		 */
+		*/ 
 	 
 }

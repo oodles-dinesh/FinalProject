@@ -22,11 +22,23 @@ public class Employee {
           @Id
           @GeneratedValue(strategy = GenerationType.AUTO)
 			private long id;
+          
 			private String Employee_Name;
 		
 			@Column(name = "email")
              private String Email;
+			
 			private BigDecimal salary;
+			//basically this is for bi directional 
+			@OneToOne(mappedBy = "employee")
+			private Department department;
+			
+	           @ManyToOne(targetEntity = Location.class,
+	        		   cascade =CascadeType.ALL )
+	           @JoinColumn(name="location_id",referencedColumnName = "id"
+	           )
+	           private Location location;
+			
 		public Employee(long id, String employee_Name, String email, BigDecimal d) {
 			super();
 			this.id = id;
@@ -67,16 +79,9 @@ public class Employee {
 		public void setSalary(BigDecimal salary) {
 			this.salary = salary;
 		}
-		//basically this is for bi directional 
-		@OneToOne(mappedBy = "employee")
-		private Department department;
 		
-           @ManyToOne(targetEntity = Location.class,
-        		   cascade =CascadeType.ALL )
-           @JoinColumn(name="location_id",referencedColumnName = "id"
-           )
            
-           private Location location;
+           
 		
        	public Location getLocation() {
 			return location;
@@ -101,6 +106,10 @@ public class Employee {
 			this.location =location;
 		
 		}
+
+
+
+		
 		
 
     

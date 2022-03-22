@@ -1,8 +1,8 @@
 package com.source.employee.service;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +12,7 @@ import com.source.employee.exception.BuisnessException;
 
 @Service
 	public class EmployeeServiceProvider {
+	private static final org.slf4j.Logger LOGGER=  LoggerFactory.getLogger(EmployeeServiceProvider.class);
 	
 	@Autowired
 	private RepositoryDao repositorydao; 
@@ -21,8 +22,10 @@ import com.source.employee.exception.BuisnessException;
 				List<Employee> employeeList=repositorydao.findAll();
 				if(employeeList.isEmpty())
 				{
+					LOGGER.info("this is empty");
 					throw new BuisnessException("604","List is completely Empty nothing to return");
 				}
+				LOGGER.info("reteriving");
 				return employeeList;
 			}catch(Exception e)
 			{
@@ -36,11 +39,9 @@ import com.source.employee.exception.BuisnessException;
 	
 
 		public Employee addEmployee(Employee employee) {
-			 try {
-				 if(employee.getEmp_Name().isEmpty()||employee.getEmp_Name().length()==0)
-				 {
-					 throw new BuisnessException("601","please give proper name  It's blank");
-				 }
+			 
+				 try {
+					 LOGGER.info("saving");
 				 Employee employeeSaved =repositorydao.save(employee);
 				 return employeeSaved;
 			 }catch(IllegalArgumentException e)
@@ -55,28 +56,16 @@ import com.source.employee.exception.BuisnessException;
 		}
 
 		public void updateEmployee(Employee employee, long id) {
+		LOGGER.info("updating");
 			employee.setId(id);
 		repositorydao.save(employee);
 			
 		}
 
 		
-		public void deleteEmployee(long id) {
+		
 			
-			try {
-				
-			 repositorydao.deleteById(id);
-			
-			}
-			catch(IllegalArgumentException e)
-			{
-				throw new BuisnessException("608","please give proper Id"+e.getMessage());
-	
-			}
-			catch(Exception e) {
-			throw new BuisnessException("615","No such exception exist in Database"+e.getMessage());
-			}
-		}
+		
 
 		public void deleteAllEmployee() {
 		repositorydao.deleteAll();
@@ -85,20 +74,24 @@ import com.source.employee.exception.BuisnessException;
 
 
 
-		public Employee getEmployeeId(long id) {
-			try {
+		public Employee getEmployeeId(long id) throws Exception{
+		
 			
-			 return repositorydao.findById(id).get();
-			}
-			catch(IllegalArgumentException e)
+			 Employee empl= repositorydao.findById(id).get();
+			 if(empl==null)
+			 {
+				 throw new Exception("this key  is not valid");
+			 }
+			 
+			 return empl;
 			
-			{
-				throw new BuisnessException("606","please give proper Id"+e.getMessage());
-			}
-			catch(NoSuchElementException e)
-			{
-				throw new BuisnessException("607","No such Id present in Database"+e.getMessage());
-			}
+			
+		}
+
+
+
+		public void deleteEmployee(long empId) {
+	        repositorydao.deleteById(empId);
 			
 		}
 		

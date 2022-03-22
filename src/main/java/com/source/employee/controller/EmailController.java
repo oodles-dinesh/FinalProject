@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.source.employee.service.EmailService;
 
 
+
 @RestController
 @RequestMapping("/employee")
 public class EmailController {
@@ -16,9 +17,11 @@ EmailService emailService;
 @GetMapping("/sendEmail")
 public String sendEmail() 
 {
+	
 return emailService.sendEmail();
 
  }
+
 @GetMapping("/sendEmailwithAttachment")
 
 public String sendEmailwithAttachment() 

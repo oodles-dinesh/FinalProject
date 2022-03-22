@@ -10,9 +10,7 @@ import com.source.employee.entity.Employee;
 @EnableJpaRepositories
 public interface RepositoryDao extends JpaRepository<Employee, Long> {
 
-	
 
-	
 
 
 }

@@ -1,0 +1,31 @@
+2022-03-16 18:12:02.830  INFO 33773 --- [restartedMain] c.s.employee.EmployeeTraineeApplication  : Starting EmployeeTraineeApplication using Java 17.0.1 on dinesh-Latitude-3520 with PID 33773 (/home/dinesh/Desktop/IDE/Employee_Trainee/target/classes started by dinesh in /home/dinesh/Desktop/IDE/Employee_Trainee)
+2022-03-16 18:12:02.830 DEBUG 33773 --- [restartedMain] c.s.employee.EmployeeTraineeApplication  : Running with Spring Boot v2.6.4, Spring v5.3.14
+2022-03-16 18:12:02.830  INFO 33773 --- [restartedMain] c.s.employee.EmployeeTraineeApplication  : No active profile set, falling back to 1 default profile: "default"
+2022-03-16 18:12:02.908  INFO 33773 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-03-16 18:12:02.915  INFO 33773 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 6 JPA repository interfaces.
+2022-03-16 18:12:03.001  INFO 33773 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 7074 (http)
+2022-03-16 18:12:03.002  INFO 33773 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-03-16 18:12:03.002  INFO 33773 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.58]
+2022-03-16 18:12:03.015  INFO 33773 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-03-16 18:12:03.017  INFO 33773 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 185 ms
+2022-03-16 18:12:03.057  INFO 33773 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-03-16 18:12:03.060  INFO 33773 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2022-03-16 18:12:03.068  INFO 33773 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2022-03-16 18:12:03.068  INFO 33773 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2022-03-16 18:12:03.150  INFO 33773 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-03-16 18:12:03.150  INFO 33773 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-03-16 18:12:03.472  WARN 33773 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2022-03-16 18:12:03.480  INFO 33773 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 7074 (http) with context path ''
+2022-03-16 18:12:03.483  INFO 33773 --- [restartedMain] c.s.employee.EmployeeTraineeApplication  : Started EmployeeTraineeApplication in 0.676 seconds (JVM running for 60.575)
+2022-03-16 18:12:03.483  INFO 33773 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-03-16 18:13:42.401  INFO 33773 --- [http-nio-7074-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-03-16 18:13:42.401  INFO 33773 --- [http-nio-7074-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-03-16 18:13:42.402  INFO 33773 --- [http-nio-7074-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-03-16 18:13:42.420 DEBUG 33773 --- [http-nio-7074-exec-2] c.source.employee.controller.Controller  : fatal error
+2022-03-16 18:13:43.980 DEBUG 33773 --- [http-nio-7074-exec-3] c.source.employee.controller.Controller  : fatal error
+2022-03-16 18:27:35.782  WARN 33773 --- [http-nio-7074-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.source.employee.exception.EmptyInputException]
+2022-03-16 18:39:59.204  INFO 33773 --- [http-nio-7074-exec-8] c.s.e.service.EmployeeServiceProvider    : reteriving
+2022-03-16 18:40:21.425  INFO 33773 --- [RMI TCP Connection(34)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2022-03-16 18:40:21.433  INFO 33773 --- [RMI TCP Connection(34)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-03-16 18:40:21.434  INFO 33773 --- [RMI TCP Connection(34)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2022-03-16 18:40:21.437  INFO 33773 --- [RMI TCP Connection(34)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.

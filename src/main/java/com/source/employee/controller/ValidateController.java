@@ -24,9 +24,14 @@ public class ValidateController {
 	}
 	@PostMapping("/employee/validation")
 	
-		public EmployeeValidation putValidator(@RequestBody @Valid EmployeeValidation employee)
+		public EmployeeValidation putValidator(@RequestBody @Valid EmployeeValidation employee) throws Exception
 		{
-		return  servicevalidation.putValidator(employee);
+		EmployeeValidation employeeVal=  servicevalidation.putValidator(employee);
+		if(employeeVal.getEmail().endsWith("@gmail.com"))
+			return employeeVal;
+		else
+			throw new Exception("this is not proper way to give your email");
+			
 	}
 
 }

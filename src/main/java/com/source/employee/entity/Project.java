@@ -2,6 +2,7 @@ package com.source.employee.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -47,7 +48,7 @@ public class Project {
 		super();
 	}
 	
-	@ManyToMany
+	@ManyToMany(targetEntity = Employee.class,cascade = CascadeType.ALL)
 	@JoinTable(name="employee_project",
 	 joinColumns = @JoinColumn(name="projectid",referencedColumnName = "project_id"),
 	 inverseJoinColumns = @JoinColumn(name="employee_id",referencedColumnName = "id"))

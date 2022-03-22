@@ -9,6 +9,8 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 @Entity
 public class EmployeeValidation {
+/*	ResourceBundle bundle = ResourceBundle.getBundle("messages", Locale.CHINA); 
+	String message = bundle.getString("label");*/
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
@@ -16,11 +18,12 @@ public class EmployeeValidation {
 	@Email
 	
 	private  String email;
+	@ValidPassword
 	@NotEmpty
 	@Size(min = 8,message = "the password should atleast 8 character")
 	private  String password;
 	@NotEmpty
-	@Size(min=10,max=10,message = "It contains 10 digits")
+	@Size(min=10,max=10,message = "MENTION!!!-> It should contains 10 digits")
 	private String phoneNumber;
 	public long getId() {
 		return id;
