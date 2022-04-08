@@ -30,7 +30,7 @@ public class ValidateController {
 		if(employeeVal.getEmail().endsWith("@gmail.com"))
 			return employeeVal;
 		else
-			throw new Exception("this is not proper way to give your email");
+			throw new Exception("please check detail you provide is correct!!!!");
 			
 	}
 

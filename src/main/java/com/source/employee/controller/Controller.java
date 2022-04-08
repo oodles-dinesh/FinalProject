@@ -2,6 +2,8 @@ package com.source.employee.controller;
 
 import java.util.List;
 
+import javax.validation.constraints.NegativeOrZero;
+
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -48,18 +50,29 @@ public class Controller {
 	}
 
 	@PutMapping("/employee/{id}")
-	public Employee updateEmployee(@RequestBody Employee employee, @PathVariable("id") long id) {
-		employeeservice.updateEmployee(employee, id);
-		return employee;
+	public Employee updateEmployee(@RequestBody Employee employee, @PathVariable("id") long id) 
+			throws Exception{
+	Employee employee1=	employeeservice.updateEmployee(employee, id);
+	if(employee1==null)
+	throw new Exception("this id is not exist in database"+id);	
+	
+		return employee1;
 
 	}
 
 	@DeleteMapping("/employee/{id}")
-	public ResponseEntity<Void> deleteEmployee(@PathVariable("id") long empId) {
-	
-		employeeservice.deleteEmployee(empId);
+	public ResponseEntity<Void> deleteEmployee(@PathVariable("id") long empId) throws Exception {
+		boolean flag =false;
+		   if(flag==false) {
+            employeeservice.deleteEmployee(empId);
+ 	       return new ResponseEntity<Void>(HttpStatus.ACCEPTED);
+		   }
+		   else
+		   {
+			   flag=true;
+			 throw new Exception("this id is not present in db"+empId);
 		
-	       return new ResponseEntity<Void>(HttpStatus.ACCEPTED);
+		   }
 	      
 	    	  
 	      
