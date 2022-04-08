@@ -55,10 +55,10 @@ import com.source.employee.exception.BuisnessException;
 			
 		}
 
-		public Employee updateEmployee(Employee employee, long id) {
+		public void updateEmployee(Employee employee, long id) {
 		LOGGER.info("updating");
 			employee.setId(id);
-		return repositorydao.save(employee);
+		repositorydao.save(employee);
 			
 		}
 
@@ -91,8 +91,6 @@ import com.source.employee.exception.BuisnessException;
 
 
 		public void deleteEmployee(long empId) {
-		 //  Employee employeeId =new Employee();
-				
 	        repositorydao.deleteById(empId);
 			
 		}
